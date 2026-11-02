@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix 102th 雄女校慶官方網站_ok",
+  "description": "高雄女中 102 週年校慶與運動會／園遊會官方網站，提供賽程、榮譽榜、報導、相簿與攤位資訊。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

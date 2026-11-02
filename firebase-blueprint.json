@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "CelebrationDoc": {
+      "title": "CelebrationDoc",
+      "description": "Comprehensive school celebration content including announcements, schedules, honor roll, interviews, news, booths, and albums",
+      "type": "object",
+      "properties": {
+        "updatedAt": {
+          "type": "number",
+          "description": "Timestamp of the last update in milliseconds"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Email or ID of the administrator who made the update",
+          "maxLength": 128
+        },
+        "heroImage": {
+          "type": "string",
+          "description": "Hero banner image URL or base64 data",
+          "maxLength": 5000000
+        },
+        "boothMapImage": {
+          "type": "string",
+          "description": "Booth map image URL or base64 data",
+          "maxLength": 5000000
+        },
+        "announcement": {
+          "type": "object",
+          "description": "Top announcement bar data"
+        },
+        "activities": {
+          "type": "array",
+          "description": "List of celebration sport events"
+        },
+        "schedules": {
+          "type": "array",
+          "description": "List of schedule timeline items"
+        },
+        "checkinSchedules": {
+          "type": "array",
+          "description": "List of athlete check-in timeline items"
+        },
+        "honorRoll": {
+          "type": "array",
+          "description": "List of honor roll tournament results"
+        },
+        "interviews": {
+          "type": "array",
+          "description": "List of student and class interviews"
+        },
+        "liveNews": {
+          "type": "array",
+          "description": "List of live news flash bulletins"
+        },
+        "weekActivities": {
+          "type": "array",
+          "description": "List of celebration week special events"
+        },
+        "booths": {
+          "type": "array",
+          "description": "List of class carnival booths"
+        },
+        "boothCategories": {
+          "type": "array",
+          "description": "List of available booth categories"
+        },
+        "homeCards": {
+          "type": "object",
+          "description": "Homepage feature cards custom display configuration"
+        },
+        "buttonImages": {
+          "type": "object",
+          "description": "Legacy mapping of feature button images"
+        },
+        "albums": {
+          "type": "array",
+          "description": "List of official photo albums cloud links"
+        }
+      },
+      "required": ["updatedAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized administrator account",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Administrator email address",
+          "maxLength": 128
+        },
+        "role": {
+          "type": "string",
+          "description": "Role level",
+          "enum": ["admin", "superadmin"]
+        }
+      },
+      "required": ["email", "role"]
+    },
+    "TestDoc": {
+      "title": "TestDoc",
+      "description": "Document used for connection testing",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "description": "Health status",
+          "maxLength": 32
+        }
+      }
+    }
+  },
+  "firestore": {
+    "/celebration/{docId}": {
+      "schema": "CelebrationDoc",
+      "description": "Contains live celebration database synchronized across all client devices"
+    },
+    "/admins/{adminId}": {
+      "schema": "Admin",
+      "description": "List of authorized administrator user documents"
+    },
+    "/test/{testId}": {
+      "schema": "TestDoc",
+      "description": "Health check documents for testing Firestore connectivity"
+    }
+  }
+}
